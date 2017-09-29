@@ -1,15 +1,5 @@
 package com.problem.easy;
 
-class ListNode {
-	int val;
-	ListNode next;
-
-	ListNode(int x) {
-		this.val = x;
-		this.next = null;
-	}
-}
-
 public class MergeTwoList {
 
 	public static void main(String[] args) {
