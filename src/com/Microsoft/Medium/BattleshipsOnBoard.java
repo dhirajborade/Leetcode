@@ -1,10 +1,15 @@
 package com.Microsoft.Medium;
 
+import java.util.Arrays;
+
 public class BattleshipsOnBoard {
 
 	public static void main(String[] args) {
-		char[][] board = new char[][] { { 'X', '.', '.', 'X' }, { '.', '.', '.', 'X' }, { '.', '.', '.', 'X' } };
+		char[][] board = new char[][] { { 'X', '.', '.', 'X' }, { 'X', '.', '.', '.' }, { 'X', '.', '.', 'X' } };
 		int result = countBattleships(board);
+		for (int i = 0; i < board.length; i++) {
+			System.out.println(Arrays.toString(board[i]));
+		}
 		System.out.println(result);
 	}
 

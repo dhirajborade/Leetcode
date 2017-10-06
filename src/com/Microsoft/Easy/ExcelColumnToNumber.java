@@ -3,9 +3,9 @@ package com.Microsoft.Easy;
 public class ExcelColumnToNumber {
 
 	public static void main(String[] args) {
-		String inputString = "AB";
+		String inputString = "AD";
 		int result = titleToNumber(inputString);
-		System.out.println(result);
+		System.out.println(inputString + " => " + result);
 	}
 
 	private static int titleToNumber(String s) {

@@ -16,9 +16,9 @@ public class NumberToWords {
 		String resultOne = numberToWords(numOne);
 		String resultTwo = numberToWords(numTwo);
 		String resultThree = numberToWords(numThree);
-		System.out.println(resultOne);
-		System.out.println(resultTwo);
-		System.out.println(resultThree);
+		System.out.println(numOne + " => " + resultOne);
+		System.out.println(numTwo + " => " + resultTwo);
+		System.out.println(numThree + " => " + resultThree);
 	}
 
 	private static String numberToWords(int num) {
