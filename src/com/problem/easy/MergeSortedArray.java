@@ -9,16 +9,16 @@ public class MergeSortedArray {
 		int[] nums2 = new int[n];
 
 		nums1[0] = 1;
-		nums1[1] = 3;
-		nums1[2] = 5;
+		nums1[1] = 2;
+		nums1[2] = 3;
 		nums1[3] = 10;
 		nums1[4] = 98;
 		nums1[5] = 0;
 		nums1[6] = 0;
 		nums1[7] = 0;
 
-		nums2[0] = 2;
-		nums2[1] = 7;
+		nums2[0] = 4;
+		nums2[1] = 5;
 		nums2[2] = 99;
 
 		for (int i = 0; i < nums1.length; i++) {
