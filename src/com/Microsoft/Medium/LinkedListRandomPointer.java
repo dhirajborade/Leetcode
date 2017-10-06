@@ -69,28 +69,70 @@ public class LinkedListRandomPointer {
 	}
 
 	public static RandomListNode copyRandomList(RandomListNode head) {
-		if (head == null) {
-			return null;
-		}
-		
-		HashMap<RandomListNode, RandomListNode> myMap = new HashMap<RandomListNode, RandomListNode>();
+//		if (head == null) {
+//			return null;
+//		}
+//		
+//		HashMap<RandomListNode, RandomListNode> myMap = new HashMap<RandomListNode, RandomListNode>();
+//		
+//		RandomListNode dummyNode = head;
+//		
+//		while (dummyNode != null) {
+//			myMap.put(dummyNode, new RandomListNode(dummyNode.label));
+//			dummyNode = dummyNode.next;
+//		}
+//		
+//		dummyNode = head;
+//		
+//		while (dummyNode != null) {
+//			myMap.get(dummyNode).next = myMap.get(dummyNode.next);
+//			myMap.get(dummyNode).random = myMap.get(dummyNode.random);
+//			dummyNode = dummyNode.next;
+//		}
+//		
+//		return myMap.get(head);
 		
 		RandomListNode dummyNode = head;
+		RandomListNode tempNode;
 		
 		while (dummyNode != null) {
-			myMap.put(dummyNode, new RandomListNode(dummyNode.label));
-			dummyNode = dummyNode.next;
+			tempNode = dummyNode.next;
+			
+			RandomListNode copyNode = new RandomListNode(dummyNode.label);
+			
+			dummyNode.next = copyNode;
+			copyNode.next = tempNode;
+			
+			dummyNode = tempNode;
 		}
 		
 		dummyNode = head;
 		
 		while (dummyNode != null) {
-			myMap.get(dummyNode).next = myMap.get(dummyNode.next);
-			myMap.get(dummyNode).random = myMap.get(dummyNode.random);
-			dummyNode = dummyNode.next;
+			if (dummyNode.random != null) {
+				dummyNode.next.random = dummyNode.random.next;
+			}
+			dummyNode = dummyNode.next.next;
 		}
 		
-		return myMap.get(head);
+		dummyNode = head;
+		
+		RandomListNode resultNode = new RandomListNode(0);
+		RandomListNode copyNode, tempResultNode = resultNode;
+		
+		while (dummyNode != null) {
+			tempNode = dummyNode.next.next;
+			
+			copyNode = dummyNode.next;
+			tempResultNode.next = copyNode;
+			tempResultNode = copyNode;
+			
+			dummyNode.next = tempNode;
+			dummyNode = tempNode;
+		}
+		
+		
+		return resultNode.next;
 	}
 
 }
