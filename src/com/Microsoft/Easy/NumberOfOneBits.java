@@ -9,18 +9,18 @@ public class NumberOfOneBits {
 	}
 
 	private static int hammingWeight(int n) {
-//		int numberOfBits = 0;
-//		int mask = 1;
-//		for (int i = 0; i < 32; i++) {
-//			if ((n & mask) != 0) {
-//				numberOfBits++;
-//			}
-//			mask <<= 1;
-//		}
-//		return numberOfBits;
-		
+		// int numberOfBits = 0;
+		// int mask = 1;
+		// for (int i = 0; i < 32; i++) {
+		// if ((n & mask) != 0) {
+		// numberOfBits++;
+		// }
+		// mask <<= 1;
+		// }
+		// return numberOfBits;
+
 		int numberOfBits = 0;
-		
+
 		while (n != 0) {
 			numberOfBits++;
 			n &= (n - 1);
