@@ -1,6 +1,6 @@
 package com.Microsoft.Medium;
 
-public class NextPointerTree {
+public class NextPointerII {
 
 	private static class TreeLinkNode {
 		TreeLinkNode left;
@@ -17,7 +17,6 @@ public class NextPointerTree {
 		root.right = new TreeLinkNode(3);
 		root.left.left = new TreeLinkNode(4);
 		root.left.right = new TreeLinkNode(5);
-		root.right.left = new TreeLinkNode(6);
 		root.right.right = new TreeLinkNode(7);
 		connect(root);
 	}
@@ -26,19 +25,24 @@ public class NextPointerTree {
 		if (root == null) {
 			return;
 		}
-		TreeLinkNode currentNode = null;
-		TreeLinkNode previousNode = root;
+		TreeLinkNode dummyNode = new TreeLinkNode(-1);
+		TreeLinkNode previousNode = dummyNode;
 		
-		while (previousNode.left != null) {
-			currentNode = previousNode;
-			while (currentNode != null) {
-				currentNode.left.next = currentNode.right;
-				if (currentNode.next != null) {
-					currentNode.right.next = currentNode.next.left;
-				}
-				currentNode = currentNode.next;
+		while (root != null) {
+			if (root.left != null) {
+				previousNode.next = root.left;
+				previousNode = previousNode.next;
 			}
-			previousNode = previousNode.left;
+			if (root.right != null) {
+				previousNode.next = root.right;
+				previousNode = previousNode.next;
+			}
+			root = root.next;
+			if (root == null) {
+				previousNode = dummyNode;
+				root = dummyNode.next;
+				dummyNode.next = null;
+			}
 		}
 	}
 
