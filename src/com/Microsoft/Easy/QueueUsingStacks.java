@@ -25,7 +25,6 @@ public class QueueUsingStacks {
 		myQueue.push(6);
 		myQueue.push(7);
 		int param_2 = myQueue.pop();
-		int param_6 = myQueue.pop();
 		int param_3 = myQueue.peek();
 		boolean param_4 = myQueue.empty();
 		System.out.println(param_1);
