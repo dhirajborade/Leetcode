@@ -10,7 +10,7 @@ public class TwoSum {
 		int[] result = new int[2];
 		result = twoSum(nums, target);
 		for (int i = 0 ; i < result.length ; i++) {
-			System.out.print(result[i] + "\t");
+			System.out.print(result[i] + " ");
 		}
 	}
 
