@@ -4,22 +4,21 @@ public class KthLargestElement {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] nums = new int[] { 3, 2, 1, 5, 6, 4 };
-		int k = 2;
+		int[] nums = new int[] { 5, 3, 6, 8, 45, 5, 1, 64, 9, 100, 2 };
+		int k = (nums.length + 1) / 2;
 		System.out.println(findKthLargest(nums, k));
 	}
 
 	private static int findKthLargest(int[] nums, int k) {
-
 		k = nums.length - k;
-		int lo = 0;
-		int hi = nums.length - 1;
-		while (lo < hi) {
-			final int j = partition(nums, lo, hi);
-			if (j < k) {
-				lo = j + 1;
-			} else if (j > k) {
-				hi = j - 1;
+		int left = 0;
+		int right = nums.length - 1;
+		while (left < right) {
+			int elementIndex = selectionPartition(nums, left, right);
+			if (elementIndex < k) {
+				left = elementIndex + 1;
+			} else if (elementIndex > k) {
+				right = elementIndex - 1;
 			} else {
 				break;
 			}
@@ -27,32 +26,31 @@ public class KthLargestElement {
 		return nums[k];
 	}
 
-	private static int partition(int[] a, int lo, int hi) {
-
-		int i = lo;
-		int j = hi + 1;
+	private static int selectionPartition(int[] nums, int left, int right) {
+		int i = left;
+		int j = right + 1;
 		while (true) {
-			while (i < hi && less(a[++i], a[lo]))
-				;
-			while (j > lo && less(a[lo], a[--j]))
-				;
+			while (i < right && compareElements(nums[++i], nums[left])) {
+			}
+			while (j > left && compareElements(nums[left], nums[--j])) {
+			}
 			if (i >= j) {
 				break;
 			}
-			exch(a, i, j);
+			swapElements(nums, i, j);
 		}
-		exch(a, lo, j);
+		swapElements(nums, left, j);
 		return j;
 	}
 
-	private static void exch(int[] a, int i, int j) {
-		final int tmp = a[i];
-		a[i] = a[j];
-		a[j] = tmp;
+	private static boolean compareElements(int left, int right) {
+		return left < right;
 	}
 
-	private static boolean less(int v, int w) {
-		return v < w;
+	private static void swapElements(int[] nums, int left, int right) {
+		int temp = nums[left];
+		nums[left] = nums[right];
+		nums[right] = temp;
 	}
 
 }
